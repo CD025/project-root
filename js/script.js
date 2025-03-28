@@ -2,9 +2,7 @@ let files = [];
 
 function uploadFiles() {
     const input = document.getElementById('fileInput');
-    const fileList = input.files;
-    
-    for (const file of fileList) {
+    for (const file of input.files) {
         files.push({
             name: file.name,
             type: file.type || 'unknown',
@@ -44,9 +42,7 @@ function deleteFile(index) {
 }
 
 function deleteSelected() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    const indexesToDelete = Array.from(checkboxes).map(cb => parseInt(cb.getAttribute('data-index')));
-    files = files.filter((_, index) => !indexesToDelete.includes(index));
+    files = files.filter((_, index) => !document.querySelector(`input[data-index="${index}"]`).checked);
     renderTable();
 }
 
@@ -68,6 +64,10 @@ function downloadAll() {
     });
 }
 
+function selectAll(checkbox) {
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = checkbox.checked);
+}
+
 function editFile(index) {
     const newName = prompt("Enter new file name:", files[index].name);
     if (newName) {
@@ -75,3 +75,9 @@ function editFile(index) {
         renderTable();
     }
 }
+
+function refreshFiles() {
+    alert('Files refreshed!');
+}
+
+renderTable();
