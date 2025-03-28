@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Drive File Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>Google Drive File Manager</h2>
+        <div class="controls">
+            <input type="file" id="fileInput" multiple />
+            <button onclick="uploadFiles()">Upload</button>
+            <button onclick="downloadAll()">Download as ZIP</button>
+            <button onclick="removeAllCollaborators()">Remove All Collaborators</button>
+            <button onclick="deleteSelected()">Delete Selected</button>
+        </div>
+        <table id="fileTable">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Last Modified</th>
+                    <th>Size</th>
+                    <th>Actions</th>
+                    <th>Collaborators</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
